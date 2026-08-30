@@ -1,0 +1,837 @@
+@layer reset, base, layout, components, animations;
+
+@layer reset {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { overflow-x: hidden; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+}
+
+@layer base {
+  :root {
+    --cream: #FFFCF7;
+    --ink: #2A2422;
+    --rose: #F4E2E6;
+    --sage: #DFE8E2;
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  .editorial-h2 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    letter-spacing: -0.02em;
+  }
+  .editorial-p {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: #4A4442;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+}
+
+@layer layout {
+  main {
+    position: relative;
+    overflow-x: hidden;
+    padding-bottom: 0;
+  }
+  
+  /* Pill Navbar */
+  .glass-pill-nav {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    background: rgba(255, 255, 255, 0.4); /* Make it more visible */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50px;
+    z-index: 100;
+    color: var(--ink); /* Dark text for readability */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  }
+  .brand-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .nav-links a:hover { opacity: 0.7; }
+  .nav-cart { opacity: 0.9; transition: opacity 0.3s; }
+  .nav-cart:hover { opacity: 1; }
+}
+
+@layer components {
+
+  @supports (animation-timeline: scroll()) {
+    @keyframes nav-morph {
+      0% { 
+        background: transparent; 
+        border-color: transparent; 
+        box-shadow: none; 
+        backdrop-filter: blur(0px); 
+        -webkit-backdrop-filter: blur(0px);
+        color: var(--cream); 
+      }
+      100% { 
+        background: rgba(255, 255, 255, 0.4); 
+        border-color: rgba(255, 255, 255, 0.6); 
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
+        backdrop-filter: blur(10px); 
+        -webkit-backdrop-filter: blur(10px); 
+        color: var(--ink);
+      }
+    }
+    .glass-pill-nav {
+      animation: nav-morph linear both;
+      animation-timeline: scroll();
+      animation-range: 0px 200px;
+    }
+  }
+
+  /* 1. Hero Asimétrico (Sage Style) */
+  .sage-hero {
+    position: relative;
+    height: 110vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero-image-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .hero-img {
+    width: 100%;
+    height: 115%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+  .hero-massive-text {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    margin-top: 10vh;
+  }
+  .huge-serif {
+    font-family: var(--font-heading);
+    font-size: 18vw;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    text-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  }
+  .hero-logo-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    display: block;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    background: var(--cream);
+    padding: 5px;
+  }
+
+
+  @supports (animation-timeline: scroll()) {
+    @keyframes hero-text-fade {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-100px); }
+    }
+    .hero-massive-text {
+      animation: hero-text-fade linear both;
+      animation-timeline: scroll();
+      animation-range: 0px 500px;
+    }
+  }
+
+  /* 2. Split Layout (Concepto) */
+  .sage-split {
+    display: flex;
+    align-items: center;
+    padding: 150px 5%;
+    background: var(--rose); /* Distinct background color */
+    gap: 8%;
+    max-width: 100%;
+    margin: 0 auto;
+    border-top: 1px solid rgba(0,0,0,0.05); /* Soft divider */
+  }
+  .split-left {
+    flex: 1;
+    max-width: 500px;
+  }
+  .sage-btn {
+    display: inline-block;
+    background: #8A9A86; /* Sage darker accent */
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    transition: transform 0.3s;
+  }
+  
+  .sage-btn {
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .sage-btn:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(138, 154, 134, 0.3);
+  }
+
+  
+  .split-right {
+    flex: 1.2;
+    display: flex;
+    justify-content: center;
+  }
+  .product-showcase img {
+    max-width: 100%;
+    width: 100%;
+    max-height: 75vh;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  .cast-shadow {
+    box-shadow: -20px 30px 60px rgba(0,0,0,0.15);
+  }
+
+  /* 3. Asymmetrical Collage */
+  .sage-collage {
+    padding: 100px 5%;
+    background: var(--cream);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .collage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr;
+    gap: 40px;
+    align-items: start;
+  }
+  
+  /* Interactive Collage Links */
+  .collage-link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  .collage-link img {
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .collage-link:hover img {
+    transform: scale(1.05);
+  }
+  
+  .img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+    opacity: 0.6;
+    transition: opacity 0.5s ease;
+  }
+  .collage-link:hover .img-overlay {
+    opacity: 0.9;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+  }
+  
+  .img-content {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: var(--cream);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 2;
+  }
+  .img-label {
+    position: relative;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .img-action {
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    color: #DFE8E2; /* Sage accent */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .img-action .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.4s;
+  }
+  
+  .collage-link:hover .img-label {
+    transform: translateY(-5px);
+  }
+  .collage-link:hover .img-action {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .collage-link:hover .img-action .arrow {
+    transform: translateX(5px);
+  }
+
+  .img-vertical { width: 100%; aspect-ratio: 3/4; }
+  .img-horizontal { margin-top: 60px; width: 100%; aspect-ratio: 16/9; }
+
+
+  /* 4. Massive Background Typography Section */
+  .sage-massive-bg {
+    position: relative;
+    padding: 150px 5% 250px;
+    background: var(--sage);
+    overflow: hidden;
+  }
+  .bg-typography-wrapper {
+    position: absolute;
+    top: 20%;
+    left: -5%;
+    width: 110%;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .huge-bg-text {
+    font-family: var(--font-heading);
+    font-size: 35vw;
+    font-weight: 400;
+    color: rgba(255,252,247, 0.4); /* subtle cream */
+    line-height: 0.7;
+    letter-spacing: -0.05em;
+  }
+  
+  .massive-bg-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 5%;
+  }
+  .content-left {
+    flex: 1;
+    max-width: 450px;
+  }
+  .content-overlap {
+    flex: 1.5;
+    position: relative;
+    min-height: 600px;
+  }
+  .overlap-img-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    border-radius: 10px;
+  }
+  .overlap-img-2 {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    width: 60%;
+    border-radius: 10px;
+  }
+  .overlap-text-box {
+    position: absolute;
+    bottom: -50px;
+    left: 10%;
+    background: var(--cream);
+    padding: 40px;
+    width: 60%;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  }
+  .overlap-text-box p {
+    font-size: 0.95rem;
+    color: #4A4442;
+    margin-bottom: 25px;
+  }
+  .sage-btn-outline {
+    display: inline-block;
+    border: 1px solid var(--ink);
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .sage-btn-outline:hover {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  /* FAQ Section */
+  .sage-faq-item {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 30px 0;
+  }
+  .sage-faq-item:last-child {
+    border-bottom: none;
+  }
+  .sage-faq-item h4 { 
+    font-size: 1.2rem; 
+    margin-bottom: 15px; 
+    color: var(--ink);
+  }
+  .sage-faq-item p {
+    font-size: 0.95rem;
+    color: #4A4442;
+    line-height: 1.6;
+  }
+
+  /* Premium Footer - Dark Version */
+  .sage-premium-footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 100px 5% 50px;
+    border-top: none;
+  }
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    gap: 10%;
+  }
+  .footer-brand {
+    flex: 1.5;
+  }
+  .footer-emblem {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1);
+  }
+  .huge-serif-footer {
+    font-family: var(--font-heading);
+    font-size: 6rem;
+    font-weight: 400;
+    line-height: 0.85;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+  .footer-brand p {
+    font-size: 0.95rem;
+    color: rgba(255, 252, 247, 0.8);
+    max-width: 300px;
+  }
+  
+  .footer-nav {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 80px;
+  }
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .footer-col h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: rgba(255, 252, 247, 0.5);
+  }
+  .footer-col a {
+    font-size: 1rem;
+    color: var(--cream);
+    transition: opacity 0.3s;
+    opacity: 0.8;
+  }
+  .footer-col a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+  .footer-wa-link {
+    color: #F4E2E6 !important; /* Light rose accent */
+    font-weight: 500;
+  }
+  
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255, 252, 247, 0.1);
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  .footer-disclaimer p {
+    font-size: 0.75rem;
+    color: rgba(255, 252, 247, 0.5);
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .footer-copyright p {
+    font-size: 0.8rem;
+    color: rgba(255, 252, 247, 0.7);
+  }
+  
+  @media (max-width: 900px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 50px;
+    }
+    .footer-nav {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .huge-serif-footer {
+      font-size: 4rem;
+    }
+  }
+/* WhatsApp Float */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+  .whatsapp-float:hover { transform: translateY(-5px); }
+  .whatsapp-float svg { width: 30px; height: 30px; }
+
+
+  .img-vertical img, .img-horizontal img, .img-square img, .product-showcase img, .overlap-img-1, .overlap-img-2 {
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .img-vertical:hover img, .img-horizontal:hover img, .img-square:hover img, .product-showcase:hover img, .overlap-img-1:hover, .overlap-img-2:hover {
+    transform: scale(1.05);
+  }
+
+  /* Mobile Menu Styles */
+  .nav-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 1000;
+  }
+  .mobile-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--ink);
+    position: absolute;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .mobile-menu-toggle span:first-child { top: 4px; }
+  .mobile-menu-toggle span:last-child { bottom: 4px; }
+  
+  .mobile-menu-toggle.active span:first-child {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .mobile-menu-toggle.active span:last-child {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 252, 247, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  .mobile-menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .mobile-link {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--ink);
+    text-transform: lowercase;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .mobile-menu-overlay.active .mobile-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .mobile-menu-overlay.active .mobile-link:nth-child(1) { transition-delay: 0.1s; }
+  .mobile-menu-overlay.active .mobile-link:nth-child(2) { transition-delay: 0.2s; }
+  .mobile-menu-overlay.active .mobile-link:nth-child(3) { transition-delay: 0.3s; }
+  .mobile-menu-overlay.active .mobile-link:nth-child(4) { transition-delay: 0.4s; }
+  .mobile-menu-overlay.active .mobile-link:nth-child(5) { transition-delay: 0.5s; }
+
+  body.no-scroll { overflow: hidden; }
+
+  /* Structured Magazine Styles */
+  .structured-magazine .magazine-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .structured-magazine .fashion-quote-title {
+    font-size: 5rem;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+  .italic-highlight {
+    font-style: italic;
+    font-weight: 300;
+    color: #9A7B84;
+  }
+  .structured-magazine .fashion-line {
+    width: 60px;
+    height: 1px;
+    background: var(--ink);
+    margin-bottom: 20px;
+  }
+  .structured-magazine .fashion-desc {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    max-width: 700px;
+  }
+  
+  .magazine-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .magazine-grid .item-1 { grid-column: 1 / 2; aspect-ratio: 3/4; }
+  .magazine-grid .item-2 { grid-column: 2 / 3; aspect-ratio: 3/4; }
+  .magazine-grid .item-3 { grid-column: 3 / 4; aspect-ratio: 3/4; }
+  .magazine-grid .item-4 { grid-column: 1 / -1; aspect-ratio: 21/9; margin-top: 20px; }
+
+  /* Responsive Adjustments */
+  @media (max-width: 900px) {
+    .glass-pill-nav { padding: 15px 25px; }
+    .nav-links { display: none; }
+    .mobile-menu-toggle { display: block; }
+    
+    .sage-hero { height: 85vh; }
+    .huge-serif { font-size: 25vw; }
+    
+    .sage-split { padding: 100px 5%; }
+    .sage-collage { padding: 80px 5%; }
+    .sage-massive-bg { padding: 100px 5% 150px; }
+    .sage-steps { padding: 80px 5%; }
+    
+    .editorial-h2 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; }
+    .editorial-p { font-size: 1rem; line-height: 1.7; margin-bottom: 25px; }
+    
+    .sage-split, .massive-bg-content, .footer-split { flex-direction: column; gap: 50px; }
+    .collage-grid { grid-template-columns: 1fr; gap: 60px; }
+    .offset-down { margin-top: 0; }
+    
+    /* Adjust aspect ratios for mobile to prevent excessively long images */
+    .img-vertical { aspect-ratio: 4/5; }
+    .product-showcase img { max-height: 60vh; }
+    
+    .content-overlap { min-height: auto; margin-top: 40px; }
+    .overlap-img-1, .overlap-img-2 { position: relative; width: 100%; top: 0; right: 0; margin-bottom: 20px; }
+    .overlap-text-box { position: relative; bottom: 0; left: 0; width: 100%; margin-top: 20px; padding: 30px; }
+    .footer-right { text-align: left; margin-top: 40px; }
+    .footer-logo { margin-left: 0; }
+
+    .structured-magazine .fashion-quote-title { font-size: 3rem; }
+    .structured-magazine .magazine-header { margin-bottom: 40px; }
+    .magazine-grid { grid-template-columns: 1fr; gap: 40px; }
+    .magazine-grid .item-1, .magazine-grid .item-2, .magazine-grid .item-3 { grid-column: 1 / -1; aspect-ratio: 4/5; }
+    .magazine-grid .item-4 { grid-column: 1 / -1; aspect-ratio: 1/1; margin-top: 0; }
+  }
+}
+
+@layer animations {
+  /* JS fallback animations */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition-delay: var(--delay, 0s);
+  }
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Native CSS Scroll Animations */
+  @supports (animation-timeline: scroll()) {
+    @keyframes parallax-soft-anim {
+      from { transform: translateY(-5%); }
+      to { transform: translateY(15%); }
+    }
+    .parallax-soft {
+      animation: parallax-soft-anim linear both;
+      animation-timeline: view();
+    }
+    
+    @keyframes parallax-bg-anim {
+      from { transform: translateY(-10%); }
+      to { transform: translateY(30%); }
+    }
+    .parallax-bg {
+      animation: parallax-bg-anim linear both;
+      animation-timeline: view();
+    }
+    
+    /* Specific Hero Parallax to avoid top gap */
+    @keyframes hero-parallax {
+      from { transform: translateY(0); }
+      to { transform: translateY(15%); }
+    }
+    .hero-img.parallax-bg {
+      animation: hero-parallax linear both;
+      animation-timeline: scroll();
+    }
+    
+    @keyframes fade-slide-up {
+      from { opacity: 0; transform: translateY(80px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up {
+      animation: fade-slide-up linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 30%;
+      transition: none;
+    }
+  }
+
+  /* 30 Floating Magic Sparkles */
+  .sparkle {
+    position: absolute;
+    color: #DDA0DD; /* Plum / Bright Lilac */
+    text-shadow: 0 0 10px rgba(221, 160, 221, 0.8), 0 0 20px rgba(221, 160, 221, 0.4);
+    font-size: 24px;
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none;
+    animation: float-sparkle 12s infinite linear;
+  }
+  
+  .sp-1 { top: 2%; left: 81%; animation-delay: -11s; font-size: 13px; }
+  .sp-2 { top: 40%; left: 74%; animation-delay: -5s; font-size: 19px; }
+  .sp-3 { top: 30%; left: 45%; animation-delay: -12s; font-size: 26px; }
+  .sp-4 { top: 8%; left: 32%; animation-delay: -9s; font-size: 14px; }
+  .sp-5 { top: 96%; left: 91%; animation-delay: -12s; font-size: 24px; }
+  .sp-6 { top: 62%; left: 39%; animation-delay: -4s; font-size: 16px; }
+  .sp-7 { top: 76%; left: 24%; animation-delay: -1s; font-size: 18px; }
+  .sp-8 { top: 18%; left: 18%; animation-delay: -4s; font-size: 18px; }
+  .sp-9 { top: 73%; left: 16%; animation-delay: -12s; font-size: 21px; }
+  .sp-10 { top: 68%; left: 91%; animation-delay: 0s; font-size: 16px; }
+  .sp-11 { top: 5%; left: 32%; animation-delay: -3s; font-size: 24px; }
+  .sp-12 { top: 90%; left: 22%; animation-delay: -6s; font-size: 20px; }
+  .sp-13 { top: 32%; left: 66%; animation-delay: -7s; font-size: 20px; }
+  .sp-14 { top: 41%; left: 71%; animation-delay: -1s; font-size: 24px; }
+  .sp-15 { top: 22%; left: 26%; animation-delay: -5s; font-size: 18px; }
+  .sp-16 { top: 86%; left: 6%; animation-delay: 0s; font-size: 17px; }
+  .sp-17 { top: 22%; left: 40%; animation-delay: -5s; font-size: 12px; }
+  .sp-18 { top: 65%; left: 20%; animation-delay: -15s; font-size: 26px; }
+  .sp-19 { top: 98%; left: 45%; animation-delay: -4s; font-size: 14px; }
+  .sp-20 { top: 83%; left: 60%; animation-delay: -3s; font-size: 22px; }
+  .sp-21 { top: 32%; left: 93%; animation-delay: -8s; font-size: 21px; }
+  .sp-22 { top: 55%; left: 78%; animation-delay: -15s; font-size: 22px; }
+  .sp-23 { top: 93%; left: 16%; animation-delay: -6s; font-size: 21px; }
+  .sp-24 { top: 2%; left: 81%; animation-delay: -8s; font-size: 19px; }
+  .sp-25 { top: 24%; left: 64%; animation-delay: -8s; font-size: 19px; }
+  .sp-26 { top: 76%; left: 21%; animation-delay: -3s; font-size: 23px; }
+  .sp-27 { top: 41%; left: 20%; animation-delay: -10s; font-size: 23px; }
+  .sp-28 { top: 60%; left: 93%; animation-delay: -5s; font-size: 13px; }
+  .sp-29 { top: 60%; left: 76%; animation-delay: -1s; font-size: 26px; }
+  .sp-30 { top: 30%; left: 6%; animation-delay: -8s; font-size: 17px; }
+
+  @keyframes float-sparkle {
+    0% { transform: translateY(50px) rotate(0deg); opacity: 0; }
+    15% { opacity: 0.9; }
+    85% { opacity: 0.9; }
+    100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
+  }
+}
