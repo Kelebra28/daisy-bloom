@@ -835,3 +835,512 @@
     100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
   }
 }
+
+/* --- Dermely Layout (Cuidado Corporal) --- */
+
+/* Hero */
+.dermely-hero { position: relative; height: 100vh; width: 100%; overflow: hidden; background: #e5dfd9; }
+.dermely-hero-img { width: 100%; height: 110%; object-fit: cover; object-position: center 30%; }
+.dermely-hero-content { position: absolute; bottom: 10%; left: 5%; color: var(--cream); z-index: 2; max-width: 550px; }
+.dermely-hero-title { font-family: var(--font-heading); font-size: 4.5rem; line-height: 1; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -1px; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+.dermely-hero-desc { font-size: 1.05rem; margin-bottom: 30px; opacity: 0.95; line-height: 1.6; text-shadow: 0 1px 5px rgba(0,0,0,0.3); }
+.dermely-btn { border: 1px solid var(--cream); color: var(--cream); padding: 12px 35px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; display: inline-block; transition: all 0.3s; }
+.dermely-btn:hover { background: var(--cream); color: var(--ink); }
+
+.dermely-floating-card { position: absolute; bottom: 10%; right: 5%; background: var(--cream); color: var(--ink); padding: 25px; width: 240px; text-align: center; z-index: 2; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+.dermely-floating-card p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: #8A9A86; margin-bottom: 15px; font-weight: 500; }
+.dermely-floating-card img { height: 140px; object-fit: contain; margin: 0 auto 15px; }
+.dermely-floating-card h4 { font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 5px; text-transform: uppercase; }
+.dermely-floating-card span { font-size: 0.8rem; color: #666; }
+
+/* Product Carousel */
+.dermely-section-header { display: flex; justify-content: space-between; align-items: flex-end; padding: 80px 5% 40px; border-bottom: 1px solid rgba(0,0,0,0.1); background: var(--cream); }
+.dermely-section-title { font-family: var(--font-heading); font-size: 1.8rem; text-transform: uppercase; letter-spacing: 2px; }
+.dermely-controls { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #888; display: flex; gap: 20px; }
+.dermely-controls span { cursor: pointer; transition: color 0.3s; }
+.dermely-controls span:hover { color: var(--ink); }
+
+.dermely-products { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid rgba(0,0,0,0.1); background: var(--cream); }
+.dermely-product { padding: 50px 30px; border-right: 1px solid rgba(0,0,0,0.1); text-align: left; display: flex; flex-direction: column; }
+.dermely-product:last-child { border-right: none; }
+.dermely-product-img { height: 200px; width: 100%; object-fit: contain; margin-bottom: 30px; transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); cursor: pointer; }
+.dermely-product:hover .dermely-product-img { transform: scale(1.08); }
+.dermely-stars { font-size: 0.75rem; color: #8A9A86; margin-bottom: 10px; letter-spacing: 2px; }
+.dermely-product-title { font-family: var(--font-heading); font-size: 1.2rem; text-transform: uppercase; margin-bottom: 15px; flex-grow: 1; }
+.dermely-shop-link { font-size: 0.8rem; text-transform: uppercase; border-bottom: 1px solid var(--ink); display: inline-block; padding-bottom: 2px; align-self: flex-start; letter-spacing: 1px; transition: opacity 0.3s; }
+.dermely-shop-link:hover { opacity: 0.6; }
+
+/* Split Info */
+.dermely-split { display: flex; min-height: 85vh; border-bottom: 1px solid rgba(0,0,0,0.1); }
+.dermely-split-left { flex: 1; background: #9C5A42; color: var(--cream); padding: 100px 8%; display: flex; flex-direction: column; justify-content: center; }
+.dermely-split-right { flex: 1.2; position: relative; overflow: hidden; }
+.dermely-split-right img { width: 100%; height: 100%; object-fit: cover; }
+.dermely-step { display: flex; gap: 25px; margin-bottom: 50px; }
+.dermely-step-num { font-family: var(--font-heading); font-size: 1.2rem; border: 1px solid rgba(255,255,255,0.4); width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.dermely-step-content h4 { font-family: var(--font-heading); font-size: 1.3rem; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; }
+.dermely-step-content p { font-size: 0.95rem; opacity: 0.85; line-height: 1.6; }
+.dermely-btn-rust { border: 1px solid var(--cream); color: var(--cream); padding: 15px 40px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; display: inline-block; align-self: flex-start; margin-top: auto; transition: all 0.3s; }
+.dermely-btn-rust:hover { background: var(--cream); color: #9C5A42; }
+
+/* Targeted Solutions */
+.dermely-solutions { display: flex; min-height: 60vh; background: var(--cream); }
+.dermely-sol-left { flex: 1; padding: 50px 8%; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(0,0,0,0.1); }
+.dermely-sol-left h3 { font-family: var(--font-heading); font-size: 1.5rem; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; }
+.dermely-sol-left p { font-size: 0.95rem; color: #666; margin-bottom: 30px; line-height: 1.5; }
+.dermely-sol-img { position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; height: 280px; }
+.dermely-sol-img img { max-height: 100%; object-fit: contain; }
+.dermely-sol-nav { display: flex; justify-content: center; gap: 30px; font-size: 0.8rem; text-transform: uppercase; color: #888; margin-bottom: 30px; letter-spacing: 1px; }
+.dermely-btn-dark { border: 1px solid var(--ink); color: var(--ink); padding: 12px 40px; text-transform: uppercase; font-size: 0.85rem; display: inline-block; text-align: center; margin: 0 auto; letter-spacing: 1px; transition: all 0.3s; }
+.dermely-btn-dark:hover { background: var(--ink); color: var(--cream); }
+
+.dermely-sol-right { flex: 1.5; position: relative; overflow: hidden; }
+.dermely-sol-right img.main-img { width: 100%; height: 100%; object-fit: cover; }
+.dermely-sol-overlay { position: absolute; bottom: 8%; left: 8%; background: var(--cream); padding: 20px; width: 280px; display: flex; align-items: center; gap: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+.dermely-sol-overlay img { width: 60px; height: 60px; object-fit: contain; border: 1px solid rgba(0,0,0,0.05); padding: 5px; }
+.dermely-sol-overlay h4 { font-family: var(--font-heading); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 4px; letter-spacing: 1px; }
+.dermely-sol-overlay p { font-size: 0.75rem; color: #888; }
+
+@media (max-width: 900px) {
+  .dermely-hero { height: 85vh; }
+  .dermely-hero-title { font-size: 3rem; }
+  .dermely-floating-card { display: none; } /* Hide on mobile to save space */
+  
+  .dermely-products { grid-template-columns: 1fr 1fr; }
+  .dermely-product { border-bottom: 1px solid rgba(0,0,0,0.1); }
+  .dermely-product:nth-child(even) { border-right: none; }
+  
+  .dermely-split { flex-direction: column; min-height: auto; }
+  .dermely-split-right { height: 50vh; }
+  
+  .dermely-solutions { flex-direction: column; height: auto; }
+  .dermely-sol-left { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); padding: 60px 5%; }
+  .dermely-sol-right { height: 50vh; }
+  .dermely-sol-overlay { width: 90%; bottom: 5%; left: 5%; }
+}
+
+/* Product Detail Modal */
+.dermely-modal {
+  border: none;
+  border-radius: 20px;
+  padding: 0;
+  width: 90%;
+  max-width: 850px;
+  background: var(--cream);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  margin: auto;
+}
+
+.dermely-modal::backdrop {
+  background: rgba(42, 36, 34, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  display: flex;
+  min-height: 450px;
+}
+
+.modal-image {
+  flex: 1;
+  background: var(--sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.modal-image img {
+  width: 100%;
+  height: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.modal-details {
+  flex: 1.2;
+  padding: 60px 50px;
+  position: relative;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-close {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  font-weight: 300;
+  cursor: pointer;
+  color: var(--ink);
+  transition: transform 0.3s;
+  line-height: 1;
+}
+.modal-close:hover {
+  transform: scale(1.1);
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+.modal-subtitle {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #8A9A86;
+  margin-bottom: 20px;
+  display: block;
+}
+.modal-desc {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4A4442;
+  margin-bottom: 30px;
+}
+.modal-benefits {
+  list-style: none;
+  margin-bottom: 40px;
+}
+.modal-benefits li {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.modal-benefits li::before {
+  content: '✓';
+  color: #8A9A86;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.modal-details .dermely-btn-dark {
+  margin: 0;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+@media (max-width: 768px) {
+  .modal-content { flex-direction: column; }
+  .modal-image { padding: 30px; height: 300px; }
+  .modal-details { padding: 40px 30px; }
+}
+
+/* Social Contact Section */
+.sage-social-contact {
+  padding: 120px 5%;
+  background: var(--sage);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-contact-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: var(--cream);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.social-contact-subtitle {
+  font-size: 1.1rem;
+  color: var(--cream);
+  opacity: 0.9;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-inline: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.social-icons-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.social-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--sage);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.social-icon-link:hover {
+  transform: translateY(-10px) scale(1.05);
+  color: var(--rose);
+}
+
+.social-icon-link svg {
+  width: 35px;
+  height: 35px;
+  fill: currentColor;
+}
+
+@media (max-width: 600px) {
+  .social-icons-wrapper { gap: 20px; }
+  .social-icon-link { width: 60px; height: 60px; }
+  .social-icon-link svg { width: 25px; height: 25px; }
+}
+
+.social-contact-details {
+  margin-top: 50px;
+  color: var(--cream);
+  font-size: 1.05rem;
+  opacity: 0.95;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-contact-details p {
+  margin: 0;
+}
+
+.social-contact-details strong {
+  color: #D4BBA5;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-right: 10px;
+}
+
+/* --- Split Contact Section --- */
+.db-contact-section {
+  display: flex;
+  padding: 80px 5%;
+  background: var(--cream);
+  justify-content: center;
+}
+
+.db-contact-container {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  gap: 20px;
+}
+
+/* Left Column (Dark) */
+.db-contact-left {
+  flex: 1;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 30px;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.db-contact-tag {
+  color: var(--rose);
+  border: 1px solid var(--rose);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  align-self: flex-start;
+  margin-bottom: 30px;
+}
+
+.db-contact-left h2 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.db-contact-left h2 span {
+  color: var(--sage);
+}
+
+.db-contact-left p.db-contact-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.db-contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.db-contact-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  color: var(--cream);
+  transition: transform 0.3s, background 0.3s;
+}
+.db-contact-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.db-contact-icon {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--rose);
+}
+.db-contact-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.db-contact-info h4 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+.db-contact-info span {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Right Column (Form) */
+.db-contact-right {
+  flex: 1.2;
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 60px 50px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.db-contact-right h3 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.db-contact-right p.db-form-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+
+.db-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.db-form-row {
+  display: flex;
+  gap: 20px;
+}
+.db-form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.db-form-group label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--ink);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.db-form-group input,
+.db-form-group select,
+.db-form-group textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid var(--sage);
+  border-radius: 10px;
+  background: #fafafa;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--ink);
+  transition: border-color 0.3s;
+}
+.db-form-group input:focus,
+.db-form-group select:focus,
+.db-form-group textarea:focus {
+  outline: none;
+  border-color: var(--ink);
+  background: #fff;
+}
+
+.db-form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.db-btn-whatsapp {
+  background: var(--ink);
+  color: var(--cream);
+  border: none;
+  padding: 18px;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  width: 100%;
+}
+.db-btn-whatsapp:hover {
+  background: var(--sage);
+  color: var(--ink);
+}
+.db-btn-whatsapp svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.db-form-disclaimer {
+  font-size: 0.7rem;
+  color: #888;
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .db-contact-container { flex-direction: column; }
+  .db-form-row { flex-direction: column; gap: 25px; }
+  .db-contact-left, .db-contact-right { padding: 40px 30px; }
+  .db-contact-left h2 { font-size: 2.5rem; }
+}
