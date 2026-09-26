@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda Bloom | Catálogo de Belleza</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/assets/css/v2-styles.css" />
+  <link rel="stylesheet" href="/assets/css/tienda.css" />
+</head>
+<body>
+  <!-- Header from v2 -->
+  <header class="glass-pill-nav is-scrolled" style="background: rgba(255, 250, 241, .85); border-bottom: 1px solid rgba(203,167,94,0.1);">
+    <a class="brand-icon" href="/index-v2.html">
+      <img src="/assets/img/daisy-bloom-logo-emblema.webp" alt="Logo" />
+    </a>
+    <div class="nav-links">
+      <a href="/index-v2.html#inicio">Inicio</a>
+      <a href="/index-v2.html#que-es">Concepto</a>
+      <a href="/index-v2.html#rutas">Rutas</a>
+      <a href="/tienda.html" style="background: rgba(248, 215, 223, .8); color: #2A2422; padding: 4px 12px; border-radius: 20px;">Tienda</a>
+    </div>
+    <div class="nav-right-actions">
+      <button class="mobile-menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="store-main">
+    <div class="store-header">
+      <h1 class="store-title">Catálogo Bloom</h1>
+      <p class="store-subtitle">Encuentra los productos ideales para resaltar tu belleza natural.</p>
+    </div>
+
+    <div class="store-layout">
+      <!-- Left Sidebar: Filters -->
+      <aside class="store-sidebar">
+        <div class="filter-group">
+          <h3>Categoría</h3>
+          <label><input type="checkbox" name="categoria" value="cuidado-facial"> Cuidado Facial (12)</label>
+          <label><input type="checkbox" name="categoria" value="maquillaje"> Maquillaje (8)</label>
+          <label><input type="checkbox" name="categoria" value="cuidado-corporal"> Cuidado Corporal (5)</label>
+        </div>
+        <div class="filter-group">
+          <h3>Marca</h3>
+          <label><input type="checkbox" name="marca" value="seytu"> Seytú (25)</label>
+          <label><input type="checkbox" name="marca" value="omnilife"> Omnilife (10)</label>
+        </div>
+        <div class="filter-group">
+          <h3>Tipo de Piel</h3>
+          <label><input type="checkbox" name="piel" value="mixta"> Mixta</label>
+          <label><input type="checkbox" name="piel" value="seca"> Seca</label>
+          <label><input type="checkbox" name="piel" value="grasa"> Grasa</label>
+        </div>
+      </aside>
+
+      <!-- Right Side: Products Grid -->
+      <div class="store-grid">
+        <!-- Product Card 1 -->
+        <div class="product-card" onclick="openModal('serum')">
+          <div class="product-image-container">
+            <span class="product-tag new">Nuevo</span>
+            <img src="/assets/img/seytu-serum.jpg" alt="Suero Facial" class="main-img">
+            <img src="/assets/img/seytu-serum.jpg" alt="Suero Facial Hover" class="hover-img">
+            <button class="quick-look-btn">Vista rápida</button>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">SEYTÚ</span>
+            <h3 class="product-name">Suero Facial de Hidratación Profunda</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="reviews">(124)</span>
+            </div>
+            <span class="product-price">$450.00 MXN</span>
+          </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="product-card" onclick="openModal('foam')">
+          <div class="product-image-container">
+            <span class="product-tag bestseller">Más Vendido</span>
+            <img src="/assets/img/seytu-foam.jpg" alt="Espuma Limpiadora" class="main-img">
+            <img src="/assets/img/seytu-foam.jpg" alt="Espuma Hover" class="hover-img">
+            <button class="quick-look-btn">Vista rápida</button>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">SEYTÚ</span>
+            <h3 class="product-name">Espuma Limpiadora Facial</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="reviews">(342)</span>
+            </div>
+            <span class="product-price">$380.00 MXN</span>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="product-card" onclick="openModal('foundation')">
+          <div class="product-image-container">
+            <img src="/assets/img/seytu-foundation.jpg" alt="Maquillaje Líquido UP+" class="main-img">
+            <img src="/assets/img/seytu-foundation.jpg" alt="Maquillaje Hover" class="hover-img">
+            <button class="quick-look-btn">Vista rápida</button>
+          </div>
+          <div class="product-info">
+            <span class="product-brand">SEYTÚ</span>
+            <h3 class="product-name">Maquillaje Líquido UP+ FPS 15</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="reviews">(89)</span>
+            </div>
+            <span class="product-price">$510.00 MXN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Product Modal -->
+  <div id="product-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-body">
+        <div class="modal-image">
+          <img id="modal-img" src="" alt="Producto">
+        </div>
+        <div class="modal-details">
+          <span id="modal-brand" class="product-brand">SEYTÚ</span>
+          <h2 id="modal-title" class="modal-title">Nombre del Producto</h2>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span>
+            <span id="modal-reviews" class="reviews">(0)</span>
+          </div>
+          <p id="modal-price" class="modal-price">$0.00 MXN</p>
+          <p id="modal-desc" class="modal-desc">Descripción del producto.</p>
+          
+          <a id="modal-whatsapp" href="#" target="_blank" class="sage-btn w-full text-center mt-4" style="display: block; box-sizing: border-box;">Comprar por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/js/tienda.js"></script>
+</body>
+</html>
